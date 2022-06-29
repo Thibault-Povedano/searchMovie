@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { isRequiredValidator } from './validators/isRequiredValidator';
 
 @Component({
   selector: 'app-search-movie',
@@ -7,9 +9,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchMovieComponent implements OnInit {
 
-  constructor() { }
+  movieForm = this.formBuilderMovie.group({
+    idTitle: this.formBuilderMovie.group({
+      idMovie: ['', [isRequiredValidator]],
+      titleMovie:['',[isRequiredValidator]],
+    }),
+    type:['serie'],
+    release:[''],
+    fiche:[''],
+});
 
+
+onSubmit(){
+  console.log(this.movieForm)
+}
+
+constructor(private formBuilderMovie: FormBuilder) { }
+
+ficheToCourte() {
+  this.movieForm.patchValue({
+    fiche: "courte",
+  })
+}
   ngOnInit(): void {
+    this.ficheToCourte()
   }
 
 }

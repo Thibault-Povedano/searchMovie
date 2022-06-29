@@ -1,38 +1,39 @@
-
-
-<form action="">
-  <label for="id-movie">
-    Identifiant du film:<input type="text">
+<form action="" [formGroup]="movieForm">
+  <label for="id-movie" formGroupName="idTitle">
+    Identifiant du film:<input type="text" formControlName="idMovie">
+    <p>{{ movieForm.get('idTitle.idMovie')?.errors?.['idMovie'].rules }}</p>
   </label>
-  <label for="title-movie">
-    Titre du film:<input type="text">
+  <label for="title-movie" formGroupName="idTitle">
+    Titre du film:<input type="text" formControlName="titleMovie">
+    <p>{{ movieForm.get('idTitle.idTitle')?.errors?.['idTitle'].rules }}</p>
   </label>
   <fieldset>
     <legend>Choisissez votre catégorie</legend>
 
     <div>
-      <input type="radio" id="film" name="type" value="film">
+      <input type="radio" id="film" name="type" value="film" formControlName="type">
       <label for="film">Film</label>
     </div>
 
     <div>
-      <input type="radio" id="serie" name="type" value="serie">
+      <input type="radio" id="serie" name="type" value="serie" formControlName="type">
       <label for="serie">Série</label>
     </div>
 
     <div>
-      <input type="radio" id="episode" name="type" value="episode">
+      <input type="radio" id="episode" name="type" value="episode" formControlName="type">
       <label for="episode">Episode</label>
     </div>
   </fieldset>
-  <label for="years-movie">
-    Année de sortie:<input type="number">
+  <label for="release">
+    Année de sortie:<input type="number" formControlName="release">
   </label>
   <div>
-    <input type="radio" id="Complete" name="fiche" value="Complete">
-    <label for="Complete">Complète</label>
+    <input type="radio" id="complete" name="fiche" value="complete" formControlName="fiche">
+    <label for="complete">Complète</label>
 
-    <input type="radio" id="Courte" name="fiche" value="Courte">
-    <label for="Courte">Courte</label>
+    <input type="radio" id="courte" name="fiche" value="courte" formControlName="fiche">
+    <label for="courte">Courte</label>
   </div>
+  <button type="submit" (click)="onSubmit()">Valider</button>
 </form>
