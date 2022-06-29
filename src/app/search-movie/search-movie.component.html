@@ -1,0 +1,38 @@
+
+
+<form action="">
+  <label for="id-movie">
+    Identifiant du film:<input type="text">
+  </label>
+  <label for="title-movie">
+    Titre du film:<input type="text">
+  </label>
+  <fieldset>
+    <legend>Choisissez votre catégorie</legend>
+
+    <div>
+      <input type="radio" id="film" name="type" value="film">
+      <label for="film">Film</label>
+    </div>
+
+    <div>
+      <input type="radio" id="serie" name="type" value="serie">
+      <label for="serie">Série</label>
+    </div>
+
+    <div>
+      <input type="radio" id="episode" name="type" value="episode">
+      <label for="episode">Episode</label>
+    </div>
+  </fieldset>
+  <label for="years-movie">
+    Année de sortie:<input type="number">
+  </label>
+  <div>
+    <input type="radio" id="Complete" name="fiche" value="Complete">
+    <label for="Complete">Complète</label>
+
+    <input type="radio" id="Courte" name="fiche" value="Courte">
+    <label for="Courte">Courte</label>
+  </div>
+</form>
