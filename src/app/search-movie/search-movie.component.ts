@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { isRequiredValidator } from './validators/isRequiredValidator';
+import { rangeDateValidator } from './validators/rangeDateValidator';
 
 @Component({
   selector: 'app-search-movie',
@@ -18,7 +19,7 @@ export class SearchMovieComponent implements OnInit {
       validator:isRequiredValidator('idMovie', 'titleMovie')
     }),
     type:['serie'],
-    release:[''],
+    release:['',[rangeDateValidator('release')]],
     fiche:[''],
   });
 

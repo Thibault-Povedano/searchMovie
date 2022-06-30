@@ -7,7 +7,8 @@
   <label for="title-movie" formGroupName="idTitle">
     Titre du film:<input type="text" formControlName="titleMovie">
   </label>
-  <div *ngIf="movieForm.get('idTitle')?.errors?.['missingInput']">Un des deux champs est requis</div>
+
+  <p>{{ movieForm.get('idTitle')?.errors?.['missingInput'].rules }}  </p>
 
   <fieldset>
     <legend>Choisissez votre catégorie</legend>
@@ -27,9 +28,12 @@
       <label for="episode">Episode</label>
     </div>
   </fieldset>
+
   <label for="release">
     Année de sortie:<input type="number" formControlName="release">
+    <p>{{ movieForm.get('release')?.errors?.['badYears'].rules }}  </p>
   </label>
+
   <div>
     <input type="radio" id="complete" name="fiche" value="complete" formControlName="fiche">
     <label for="complete">Complète</label>

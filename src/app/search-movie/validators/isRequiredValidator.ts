@@ -6,12 +6,10 @@ export function isRequiredValidator(titleMovie: string, idMovie: string): Valida
 
     const idMovieCheck = control.get(idMovie)?.value;
     const titleMovieCheck = control.get(titleMovie)?.value;
-    console.log(idMovieCheck),
-    console.log(titleMovieCheck)
 
     const isRequired = {
       missingInput: {
-        rules: 'un des deux champs est requis'
+        rules: `L'un des deux champs 'Identifiant' ou 'Titre' doit être renseigné`
       },
     }
     return (!idMovieCheck && !titleMovieCheck ? isRequired : null);
