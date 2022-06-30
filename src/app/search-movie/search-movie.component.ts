@@ -11,18 +11,20 @@ export class SearchMovieComponent implements OnInit {
 
   movieForm = this.formBuilderMovie.group({
     idTitle: this.formBuilderMovie.group({
-      idMovie: ['', [isRequiredValidator]],
-      titleMovie:['',[isRequiredValidator]],
+      idMovie: [''],
+      titleMovie:[''],
+    },
+    {
+      validator:isRequiredValidator('idMovie', 'titleMovie')
     }),
     type:['serie'],
     release:[''],
     fiche:[''],
-});
-
+  });
 
 onSubmit(){
   console.log(this.movieForm)
-}
+};
 
 constructor(private formBuilderMovie: FormBuilder) { }
 

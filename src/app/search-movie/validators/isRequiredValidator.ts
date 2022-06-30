@@ -1,19 +1,19 @@
-import { AbstractControl, ValidationErrors } from "@angular/forms";
+import { AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
 
-// isRequiredValidator() doit accepter deux paramètres : le nom du contrôle Title et de Identifiant.
-// isRequiredValidator() doit retourner comme clé isRequired.
-export function isRequiredValidator(controle: AbstractControl,titleMovie:string, idMovie:string):ValidationErrors | null {
 
-  const valid= titleMovie || idMovie;
+export function isRequiredValidator(titleMovie: string, idMovie: string): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
 
-  const errors= {
-    titleMovie:{
-      rules: "Au moins un des deux champs est requis"
-    },
-    idMovie:{
-      rules:"Au moins un des deux champs est requis"
+    const idMovieCheck = control.get(idMovie)?.value;
+    const titleMovieCheck = control.get(titleMovie)?.value;
+    console.log(idMovieCheck),
+    console.log(titleMovieCheck)
+
+    const isRequired = {
+      missingInput: {
+        rules: 'un des deux champs est requis'
+      },
     }
+    return (!idMovieCheck && !titleMovieCheck ? isRequired : null);
   }
-
-  return(!valid ? errors : null);
 }

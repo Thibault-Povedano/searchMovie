@@ -1,12 +1,14 @@
 <form action="" [formGroup]="movieForm">
+
+
   <label for="id-movie" formGroupName="idTitle">
     Identifiant du film:<input type="text" formControlName="idMovie">
-    <p>{{ movieForm.get('idTitle.idMovie')?.errors?.['idMovie'].rules }}</p>
   </label>
   <label for="title-movie" formGroupName="idTitle">
     Titre du film:<input type="text" formControlName="titleMovie">
-    <p>{{ movieForm.get('idTitle.idTitle')?.errors?.['idTitle'].rules }}</p>
   </label>
+  <div *ngIf="movieForm.get('idTitle')?.errors?.['missingInput']">Un des deux champs est requis</div>
+
   <fieldset>
     <legend>Choisissez votre catégorie</legend>
 
