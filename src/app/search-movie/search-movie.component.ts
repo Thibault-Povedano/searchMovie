@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { isRequiredValidator } from './validators/isRequiredValidator';
 import { rangeDateValidator } from './validators/rangeDateValidator';
+import { Movie, idTitle } from '../models/movie.model';
 
 @Component({
   selector: 'app-search-movie',
@@ -9,6 +10,8 @@ import { rangeDateValidator } from './validators/rangeDateValidator';
   styleUrls: ['./search-movie.component.scss']
 })
 export class SearchMovieComponent implements OnInit {
+
+  movieSearched: any[]=[] ;
 
   movieForm = this.formBuilderMovie.group({
     idTitle: this.formBuilderMovie.group({
@@ -24,7 +27,8 @@ export class SearchMovieComponent implements OnInit {
   });
 
 onSubmit(){
-  console.log(this.movieForm)
+  this.movieSearched.push(this.movieForm.value)
+  console.log(JSON.stringify(this.movieSearched));
 };
 
 constructor(private formBuilderMovie: FormBuilder) { }
@@ -36,6 +40,7 @@ ficheToCourte() {
 }
   ngOnInit(): void {
     this.ficheToCourte()
+
   }
 
 }

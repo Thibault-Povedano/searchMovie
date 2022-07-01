@@ -1,17 +1,20 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
+import { formatDate } from '@angular/common';
 
 export function rangeDateValidator(release: string): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
 
-    const test= parseInt(control.value);
-    let result =false;
+    let yearsDate = parseInt(formatDate(new Date(), 'yyyy', 'en'));
+    const startyearDate = 1900
+    const yearInput = parseInt(control.value);
+    let result = false;
 
-    if(1900 < test && test < 2022){
+    if (startyearDate <= yearInput && yearInput <= yearsDate) {
       result = true;
     };
     const min = {
       badYears: {
-       rules:"L'année doit être comprise entre 1900 et 2022 "
+        rules: `L'année doit être comprise entre ${startyearDate} et ${yearsDate}`
       },
     };
     return (result ? null : min)
