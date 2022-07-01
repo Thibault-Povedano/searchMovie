@@ -1,7 +1,7 @@
-export class idTitle{
+export class IdTitle{
   constructor(
-    public idMovie: string,
-    public titleMovie: string,
+    public idMovie: string | null | undefined,
+    public titleMovie: string | null | undefined,
   ){
 
   }
@@ -9,10 +9,10 @@ export class idTitle{
 
 export class Movie{
   constructor(
-    public fiche: string,
-    public idTitle: idTitle,
-    public release: number,
-    public type: string,
+    public fiche: string | null | undefined,
+    public idTitle: IdTitle,
+    public release: string | null | undefined,
+    public type: string | null | undefined,
   ){}
 }
 

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormControl } from '@angular/forms';
 import { isRequiredValidator } from './validators/isRequiredValidator';
 import { rangeDateValidator } from './validators/rangeDateValidator';
-import { Movie, idTitle } from '../models/movie.model';
+import { Movie } from '../models/movie.model';
 
 @Component({
   selector: 'app-search-movie',
@@ -11,7 +11,7 @@ import { Movie, idTitle } from '../models/movie.model';
 })
 export class SearchMovieComponent implements OnInit {
 
-  movieSearched: any[]=[] ;
+  movieSearched: Movie[] =[] ;
 
   movieForm = this.formBuilderMovie.group({
     idTitle: this.formBuilderMovie.group({
@@ -27,7 +27,11 @@ export class SearchMovieComponent implements OnInit {
   });
 
 onSubmit(){
-  this.movieSearched.push(this.movieForm.value)
+  this.movieSearched.push(new Movie(
+    this.movieForm.value.fiche,
+    this.movieForm.value.idTitle,
+    this.movieForm.value.release,
+    this.movieForm.value.type,))
   console.log(JSON.stringify(this.movieSearched));
 };
 
